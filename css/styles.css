@@ -8339,6 +8339,12 @@ textarea.form-control-lg {
   color: white;
 }
 
+.bg-jungle-green {
+  --bs-bg-opacity: 0.5;
+  background-color: #2a9d8f!important;
+  color: white;
+}
+
 
 .bg-black {
   --bs-bg-opacity: 1;
