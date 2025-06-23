@@ -1,4 +1,95 @@
+body {
+      font-family: "Inter", sans-serif;
+      /* Použití obrázku na pozadí a nastavení pro jeho zobrazení */
+      background-image: url("../images/view-mountain.jpg");
+      background-size: cover;
+      /* Pokryje celou plochu */
+      background-position: center;
+      /* Vycentruje obrázek */
+      background-attachment: fixed;
+      /* Zabrání rolování obrázku s obsahem */
+      color: whitesmoke;
+    }
 
+    .btn-primary-custom {
+      background-color: #2563eb;
+      /* blue-600 */
+      color: white;
+      font-weight: 600;
+      /* font-semibold */
+      padding: 0.5rem 1.5rem;
+      /* py-2 px-6 */
+      border-radius: 0.5rem;
+      /* rounded-lg */
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #ffffff;
+      /* blue-700 */
+    }
+
+    .btn-primary-custom:disabled {
+      opacity: 1;
+      cursor: not-allowed;
+    }
+
+    .text-gradient {
+      background: linear-gradient(0deg,
+          #000000,
+          #000000);
+      /* Modrý gradient */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .navbar-glass {
+      /* Navbar s průhlednějším pozadím */
+      background-color: rgba(255, 255, 255, 0.3);
+      /* Světlejší průhlednost */
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.3);
+    }
+
+    /* Custom height for images and videos in 'Interests' section */
+    .interest-media {
+      width: 17rem;
+      /* w-72 */
+      height: 17rem;
+      /* h-72 */
+      object-fit: cover;
+      border-radius: 0.75rem;
+      /* rounded-xl */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* shadow-lg */
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .interest-media:hover {
+      transform: scale(1.05);
+      /* hover:scale-105 */
+    }
+
+    /* Custom styling for sections to ensure proper spacing with fixed navbar */
+    main {
+      padding-top: 6rem;
+      /* Adjust this value based on navbar height */
+    }
+
+    .min-h-screen {
+      min-height: 100vh;
+    }
+
+    .profile-image {
+      max-height: 600px;
+    }
+
+    .card {
+      background-color: transparent;
+      border: none;
+    }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.15);
@@ -47,61 +138,6 @@
 }
 
 
-
-      .btn-primary-custom {
-        background-color: #2563EB; /* blue-600 */
-        color: white;
-        font-weight: 600; /* font-semibold */
-        padding: 0.5rem 1.5rem; /* py-2 px-6 */
-        border-radius: 0.5rem; /* rounded-lg */
-        transition: background-color 0.3s ease-in-out;
-      }
-
-      .btn-primary-custom:hover {
-        background-color: #1D4ED8; /* blue-700 */
-      }
-
-      .btn-primary-custom:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      .text-gradient {
-        background: linear-gradient(90deg, #1A73E8, #00C2E8); /* Modrý gradient */
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .navbar-glass {
-        /* Navbar s průhlednějším pozadím */
-        background-color: rgba(255, 255, 255, 0.5); /* Světlejší průhlednost */
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-bottom: 1px solid rgba(209, 213, 219, 0.3);
-      }
-
-      /* Custom height for images and videos in 'Interests' section */
-      .interest-media {
-        width: 18rem; /* w-72 */
-        height: 18rem; /* h-72 */
-        object-fit: cover;
-        border-radius: 0.75rem; /* rounded-xl */
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-        transition: transform 0.3s ease-in-out;
-      }
-
-      .interest-media:hover {
-        transform: scale(1.05); /* hover:scale-105 */
-      }
-
-      /* Custom styling for sections to ensure proper spacing with fixed navbar */
-      main {
-        padding-top: 6rem; /* Adjust this value based on navbar height */
-      }
-
-      .min-h-screen {
-        min-height: 100vh;
-      }
 
 /* LIQUID GLASS STYLES */
 
