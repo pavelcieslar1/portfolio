@@ -2,640 +2,985 @@
 <html lang="cs">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Portfolio" />
-    <meta name="author" content="Pavel Cieslar" />
-    <title>Pavel Cieslar</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Custom Google font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <style type="text/css">
-        .bg-wallpaper {
-            background: url('assets/forest.jpg') no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Portfolio Pavla Cieslara - Software Developer" />
+  <meta name="author" content="Pavel Cieslar" />
+  <title>Pavel Cieslar - Portfolio</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Custom Google font - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Core theme CSS (includes Bootstrap) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./css/styles.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      /* Použití obrázku na pozadí a nastavení pro jeho zobrazení */
+      background-image: url("./images/view-mountain.jpg");
+      background-size: cover;
+      /* Pokryje celou plochu */
+      background-position: center;
+      /* Vycentruje obrázek */
+      background-attachment: fixed;
+      /* Zabrání rolování obrázku s obsahem */
+      color: whitesmoke;
+    }
+
+    .btn-primary-custom {
+      background-color: #2563eb;
+      /* blue-600 */
+      color: white;
+      font-weight: 600;
+      /* font-semibold */
+      padding: 0.5rem 1.5rem;
+      /* py-2 px-6 */
+      border-radius: 0.5rem;
+      /* rounded-lg */
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: #ffffff;
+      /* blue-700 */
+    }
+
+    .btn-primary-custom:disabled {
+      opacity: 1;
+      cursor: not-allowed;
+    }
+
+    .text-gradient {
+      background: linear-gradient(0deg,
+          #000000,
+          #000000);
+      /* Modrý gradient */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .navbar-glass {
+      /* Navbar s průhlednějším pozadím */
+      background-color: rgba(255, 255, 255, 0.3);
+      /* Světlejší průhlednost */
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.3);
+    }
+
+    /* Custom height for images and videos in 'Interests' section */
+    .interest-media {
+      width: 17rem;
+      /* w-72 */
+      height: 17rem;
+      /* h-72 */
+      object-fit: cover;
+      border-radius: 0.75rem;
+      /* rounded-xl */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* shadow-lg */
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .interest-media:hover {
+      transform: scale(1.05);
+      /* hover:scale-105 */
+    }
+
+    /* Custom styling for sections to ensure proper spacing with fixed navbar */
+    main {
+      padding-top: 6rem;
+      /* Adjust this value based on navbar height */
+    }
+
+    .min-h-screen {
+      min-height: 100vh;
+    }
+
+    .profile-image {
+      max-height: 600px;
+    }
+
+    .card {
+      background-color: transparent;
+      border: none;
+    }
+  </style>
 </head>
 
-<body class="d-flex flex-column h-100">
-    <main class="flex-shrink-0 bg-wallpaper">
-        <!-- Header-->
-        <section class="py-5 full-page d-flex align-items-center justify-content-center">
-            <div class="container">
-                <div class="row gx-5 align-items-center">
-                    <div class="col">
-                        <!-- Header text content-->
-                        <div class="text-center">
-                            <h1 class="display-3 fw-bolder mb-3 text-shadow-glow-subtle">
-                                <span class="text-blue-dianne d-inline">Pavel Cieslar</span>
-                            </h1>
-                            <div class="text-blue-dianne fw-bolder mb-5">
-                                <div class="text-uppercase">&middot; Software developer &middot;</div>
-                            </div>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center mb-3">
-                                <a class="btn btn-burnt-sienna btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
-                                    href="#resume">Resume</a>
-                                <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder"
-                                    href="#projects">Projects</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- About Section-->
-        <section class="bg-light py-5">
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center">
-                    <div class="col">
-                        <div class="text-center my-5">
-                            <h2 class="display-5 fw-bolder"><span class="text-blue-dianne d-inline">About Me</span></h2>
-                            <p class="text">Jsem začínající vývojář softwaru s vášní pro IT a programování. Od prvotního
-                                zájmu o počítačové hry mě cesta dovedla k vývoji softwaru, kde mohu přetvářet nápady v
-                                reálné aplikace.
-                                Rozšiřuji své znalosti v oblasti programování webových a desktopových aplikací,
-                                databází, automatizovaného testování a DevOps nástrojů. Nejvíce se zaměřuji na C#, Javu
-                                a webové technologie.
-                                Mým cílem je růst jako vývojář a přispívat k inovativním projektům, které mají smysl.
-                            </p>
-                            <div class="d-flex justify-content-center fs-2 gap-4">
-                                <a class="text-burnt-sienna" href="#contact"><i
-                                        class="bi bi-chat-square-text-fill"></i></a>
-                                <a class="text-burnt-sienna" href="https://www.linkedin.com/in/pavel-cieslar/"><i
-                                        class="bi bi-linkedin"></i></a>
-                                <a class="text-burnt-sienna" href="https://github.com/pavelcieslar1"><i
-                                        class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-5">
-                        <img src="https://dummyimage.com/400x600/343a40/6c757d" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="container px-5 my-5">
-            <a name="resume"></a>
-            <div class="text-center mb-5">
-                <h2 class="display-5 fw-bolder mb-0 pb-2">
-                    <span class="text-blue-dianne d-inline">
-                        Resume
-                    </span>
-                    <a class="text-blue-dianne px-1 py-3 bi bi-download" href="CIESLAR_CV_CS.pdf"></a>
-                </h2>
+<body class="d-flex flex-column min-vh-100">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top py-4 navbar-glass">
+    <div class="container px-4 d-flex justify-content-between align-items-center">
+      <button class="navbar-toggler d-lg-none text-dark border-0 focus-ring-0" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="bi bi-list fs-3"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navigation">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item mx-3">
+            <a class="nav-link text-lg text-secondary fw-medium hover:text-primary transition-colors duration-200"
+              href="#about">O mně</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link text-lg text-secondary fw-medium hover:text-primary transition-colors duration-200"
+              href="#projects">Projekty</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link text-lg text-secondary fw-medium hover:text-primary transition-colors duration-200"
+              href="#skills">Znalosti</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link text-lg text-secondary fw-medium hover:text-primary transition-colors duration-200"
+              href="#resume">Životopis</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link text-lg text-secondary fw-medium hover:text-primary transition-colors duration-200"
+              href="#contact">Kontakt</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-            </div>
-            <div class="row gx-5 justify-content-center">
-                <div class="col">
-                    <!-- Experience Section-->
-                    <section class="text-xxl-start">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <h2 class="text-jungle-green fw-bolder mb-0">Experience</h2>
-                        </div>
-                        <!-- Experience Card 1-->
-                        <div class="card shadow border-0 rounded-4 mb-5">
-                            <div class="card-body p-5">
-                                <div class="align-items-center gx-5">
-                                    <div class="text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-jungle-green fw-bolder mb-2">2022 - 2024</div>
-                                            <div class="small fw-bolder">Elektrospecialista</div>
-                                            <div class="small text-muted">Electroworld s.r.o</div>
-                                            <div class="small text-muted">Ostrava, Česká Republika</div>
-                                            <br>
-                                            <p>Poskytování odborného poradenství zákazníkům při výběru elektroniky a spotřebičů. 
-                                                Aktivní prodej a plnění cílů v oblasti TV, IT a spotřební elektroniky. 
-                                                Řešení reklamací a poskytování základní technické podpory.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body p-5">
-                                <div class="align-items-center gx-5">
-                                    <div class="text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-jungle-green fw-bolder mb-2">2017 - 2017</div>
-                                            <div class="small fw-bolder">Stážista – tvorba reklamy</div>
-                                            <div class="small text-muted">Multiplicalia</div>
-                                            <div class="small text-muted">Sevilla, Spain</div>
-                                            <br>
-                                            <p>3-týdenní stáž ve španělské firmě Multiplicalia zaměřená na tvorbu
-                                                reklamních bannerů a
-                                                údržbu webových stránek, včetně optimalizace kódu a zlepšení uživatelské
-                                                zkušenosti. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body p-5">
-                                <div class="align-items-center gx-5">
-                                    <div class="text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-jungle-green fw-bolder mb-2">2016 - 2016</div>
-                                            <div class="small fw-bolder">Stážista – Web developer</div>
-                                            <div class="small text-muted">DevX s.r.o</div>
-                                            <div class="small text-muted">Třinec, Česká Republika</div>
-                                            <br>
-                                            <p>Tvorba a úpravy webových stránek pomocí HTML, CSS a JavaScriptu s důrazem
-                                                na
-                                                responzivní design a optimalizaci uživatelského rozhraní. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <div class="col">
-                    <!-- Education Section-->
-                    <section>
-                        <h2 class="text-cold-pink fw-bolder mb-4">Education</h2>
-                        <!-- Education Card 1-->
-                        <div class="card shadow border-0 rounded-4 mb-5">
-                            <div class="card-body p-5">
-                                <div class="align-items-center gx-5">
-                                    <div class="text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-cold-pink fw-bolder mb-2">2024 - Present</div>
-                                            <div class="mb-2">
-                                                <div class="small fw-bolder">Rekvalifikační kurz - OOP</div>
-                                                <div class="small text-muted">VŠB - TU Ostrava, Česká Republika</div>
-                                            </div>
-                                            <br>
-                                            <p>
-                                            <ul>
-                                                <li>Programování www aplikací: HTML5, CSS3, Bootstrap, JavaScript,
-                                                    React, PHP+MySQL</li>
-                                                <li>Programování desktopových aplikací: OOP v C# (.NET Core) a Javě</li>
-                                                <li>Pokročilé technologie: XML, vlákna, JUnit testy, delegáty, regulární
-                                                    výrazy, verzovací systém Git, repository GitHub, Spring framework,
-                                                    ASP .NET Core (WebAPI a MVC)</li>
-                                                <li>Databáze (Access, Oracle, programování v PL/SQL, MS SQL Server)</li>
-                                                <li>Programování automatických testů v Selenium a SpecFlow (Gherkin)
-                                                </li>
-                                                <li>DevOps: MS Azure, Docker</li>
-                                            </ul>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body p-5">
-                                <div class="align-items-center gx-5">
-                                    <div class="text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-cold-pink fw-bolder mb-2">2018 - 2022</div>
-                                            <div class="mb-2">
-                                                <div class="small fw-bolder">Ostravská Univerzita</div>
-                                                <div class="small text-muted">Ostrava, Česká Republika</div>
-                                            </div>
-                                            <div class="fst-italic">
-                                                <div class="small text-muted">-Studium nedokončeno-</div>
-                                                <div class="small text-muted">Aplikovaná Informatika</div>
-                                            </div>
-                                            <br>
-                                            <p>Zaměření na programování, vývoj webových a mobilních aplikací,
-                                                správu databází a počítačových sítí. Základy IT bezpečnosti a vedení
-                                                projektů.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body p-5">
-                                <div class="align-items-center gx-5">
-                                    <div class="text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-cold-pink fw-bolder mb-2">2014 - 2018</div>
-                                            <div class="mb-2">
-                                                <div class="small fw-bolder">TŘINECKÁ OBCHODNÍ AKADEMIE INFORMAČNÍCH
-                                                    TECHNOLOGIÍ A VEŘEJNÉ SPRÁVY, s.r.o.</div>
-                                                <div class="small text-muted">Třinec, Česká Republika</div>
-                                            </div>
-                                            <div class="fst-italic">
-                                                <div class="small text-muted">S Maturitou</div>
-                                                <div class="small text-muted">Informační technologie</div>
-                                            </div>
-                                            <br>
-                                            <p>Zaměření na programování C#, tvorbu webových a mobilních aplikací,
-                                                grafiku,
-                                                správu sítí a operačních systémů. Získané dovednosti v konfiguraci PC
-                                                sítí a softwarové aplikace. </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- Divider-->
-                <div class="pb-5"></div>
-                <!-- Skills Section-->
-                <section>
-                    <!-- Skillset Card-->
-                    <div class="card shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <!--Certificates-->
-                            <div class="mb-5">
-                                <div class="d-flex align-items-center mb-4">
-                                    <div class="feature me-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#2a9d8f"
-                                            class="bi bi-file-text-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5M5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1m0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1" />
-                                        </svg>
-                                    </div>
-                                    <h3 class="fw-bolder mb-0"><span
-                                            class="text-jungle-green d-inline">Certificates</span></h3>
-                                </div>
-                                <div class="row row-cols-2 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="align-items-center bg-jungle-green rounded-4 p-3 h-100">
-                                            <h3>Training Certificate euromind</h3>
-                                            <p>Konkrétní úkoly související s prací: - Programování pomocí JavaScriptu,
-                                                HTML, CSS, C++ -
-                                                Používání programů jako Adobe Illustrator, Adobe Photoshop, Wordpress -
-                                                Design a vývoj webových stránek - Správa sociálních sítí</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Professional skills list-->
-                            <div class="mb-5">
-                                <div class="d-flex align-items-center mb-4">
-                                    <div class="feature me-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#264653"
-                                            class="bi bi-joystick" viewBox="0 0 16 16">
-                                            <path
-                                                d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2" />
-                                            <path
-                                                d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23" />
-                                        </svg>
-                                    </div>
-                                    <h3 class="fw-bolder mb-0"><span class="text-blue-dianne d-inline">Hobbies</span>
-                                    </h3>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">Vývoj
-                                            mobilních her</div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">
-                                            Fanoušek sci-fi</div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">Gaming
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">Čtení
-                                            technologických článku</div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">
-                                            Kvalitní káva</div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">Oprava
-                                            drobné elektroniky</div>
-                                    </div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">
-                                            Procházky se psem</div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">
-                                            Zajímám se o novinky v IT</div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">
-                                            Objevování podivných aplikací</div>
-                                    </div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">
-                                            Předávat nevyžádané rady</div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">
-                                            Poslech hudby</div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="d-flex align-items-center bg-blue-dianne rounded-4 p-3 h-100">Osobní
-                                            rozvoj a péče</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Languages list-->
-                            <div class="mb-0">
-                                <div class="d-flex align-items-center mb-4">
-                                    <div class="feature me-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#e76f51"
-                                            class="bi bi-code-slash" viewBox="0 0 16 16">
-                                            <path
-                                                d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0" />
-                                        </svg>
-                                    </div>
-                                    <h3 class="fw-bolder mb-0"><span class="text-burnt-sienna d-inline">Knowledge</span>
-                                    </h3>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 75%">
-                                                C#/.NET
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 70%">
-                                                Java
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 50%">
-                                                HTML5
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 45%">
-                                                JavaScript
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 65%">
-                                                CSS3
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 25%">
-                                                PHP
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 25%">
-                                                Spring
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 25%">
-                                                Oracle
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 25%">
-                                                MS/SQL
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 25%">
-                                                React
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 50%">
-                                                Bootstrap
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 25%">
-                                                Docker
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 85%">
-                                                Unity Engine
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="30" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 30%">
-                                                Firebase
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-4 mb-md-0">
-                                        <div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                                            aria-valuemax="100">
-                                            <div class="progress-bar" style="width: 0%">
-                                                -
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="py-5">
-                    <a name="projects"></a>
-                    <div class="container px-8 mb-5">
-                        <div class="text-center mb-5">
-                            <h1 class="display-5 fw-bolder mb-0"><span class="text-blue-dianne d-inline">Projects</span>
-                            </h1>
-                        </div>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col">
-                                <!-- Project Card 1-->
-                                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                    <div class="card-body p-0">
-                                        <div class="align-items-center">
-                                            <div class="p-5">
-                                                <h2 class="fw-bolder">Project Name 1</h2>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at
-                                                    enim eum illum aperiam placeat esse? Mollitia omnis minima saepe
-                                                    recusandae libero, iste ad asperiores! Explicabo commodi quo
-                                                    itaque! Ipsam!</p>
-                                            </div>
-                                            <img class="img-fluid" src="https://dummyimage.com/600x400/343a40/6c757d"
-                                                alt="..." />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <!-- Project Card 2-->
-                                <div class="card overflow-hidden shadow rounded-4 border-0">
-                                    <div class="card-body p-0">
-                                        <div class="align-items-center">
-                                            <div class="p-5">
-                                                <h2 class="fw-bolder">Project Name 2</h2>
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at
-                                                    enim eum illum aperiam placeat esse? Mollitia omnis minima saepe
-                                                    recusandae libero, iste ad asperiores! Explicabo commodi quo
-                                                    itaque! Ipsam!</p>
-                                            </div>
-                                            <img class="img-fluid" src="https://dummyimage.com/600x400/343a40/6c757d"
-                                                alt="..." />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="py-5">
-                    <div class="container px-5">
-                        <!-- Contact form-->
-                        <a name="contact"></a>
-                        <div class="bg-light rounded-4 py-5 px-4 px-md-5">
-                            <div class="text-center mb-5">
-                                <div class="feature">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#264653"
-                                        class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
-                                        <path
-                                            d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
-                                        <path
-                                            d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
-                                    </svg>
-                                </div>
-                                <h2 class="fw-bolder text-blue-dianne">Get in touch</h2>
-                            </div>
-                            <div class="row gx-5 justify-content-center">
-                                <div class="col-lg-8 col-xl-6">
-                                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                        <!-- Name input-->
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="name" type="text"
-                                                placeholder="Enter your name..." data-sb-validations="required" />
-                                            <label for="name">Full name *</label>
-                                            <div class="invalid-feedback" data-sb-feedback="name:required">A name is
-                                                required.</div>
-                                        </div>
-                                        <!-- Email address input-->
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="email" type="email"
-                                                placeholder="name@example.com" data-sb-validations="required,email" />
-                                            <label for="email">Email address *</label>
-                                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is
-                                                required.</div>
-                                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not
-                                                valid.</div>
-                                        </div>
-                                        <!-- Phone number input-->
-                                        <div class="form-floating mb-3">
-                                            <input class="form-control" id="phone" type="tel"
-                                                placeholder="(123) 456-7890" />
-                                            <label for="phone">Phone number</label>
-                                        </div>
-                                        <!-- Message input-->
-                                        <div class="form-floating mb-3">
-                                            <textarea class="form-control" id="message" type="text"
-                                                placeholder="Enter your message here..." style="height: 10rem"
-                                                data-sb-validations="required"></textarea>
-                                            <label for="message">Message *</label>
-                                            <div class="invalid-feedback" data-sb-feedback="message:required">A message
-                                                is required.</div>
-                                        </div>
-                                        <!-- Submit success message-->
-                                        <!---->
-                                        <!-- This is what your users will see when the form-->
-                                        <!-- has successfully submitted-->
-                                        <div class="d-none" id="submitSuccessMessage">
-                                            <div class="text-center mb-3">
-                                                <div class="fw-bolder">Form submission successful!</div>
-                                                To activate this form, sign up at
-                                                <br />
-                                                <a
-                                                    href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                            </div>
-                                        </div>
-                                        <!-- Submit error message-->
-                                        <!---->
-                                        <!-- This is what your users will see when there is-->
-                                        <!-- an error submitting the form-->
-                                        <div class="d-none" id="submitErrorMessage">
-                                            <div class="text-center text-danger mb-3">Error sending message!</div>
-                                        </div>
-                                        <!-- Submit Button-->
-                                        <div class="d-grid"><button class="btn btn-burnt-sienna btn-lg"
-                                                id="submitButton" type="submit">Submit</button></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+  <main class="flex-grow-1">
+    <!-- Header -->
+    <section
+      class="min-h-screen d-flex align-items-center justify-content-center bg-gradient-to-br from-blue-100 to-indigo-200 p-4">
+      <div class="container text-center">
+        <h1 class="display-1 fw-light mb-4 text-gradient lh-sm">
+          Pavel Cieslar
+        </h1>
+        <div class="fs-3 fw-semibold text-dark mb-5 tracking-wider">
+          &middot; Software Developer &middot;
         </div>
+        <div class="d-flex justify-content-center gap-4 text-secondary">
+          <a class="text-primary hover:text-dark transition-colors duration-200 fs-1" href="#contact" title="Kontakt">
+            <i class="bi bi-chat-square-text-fill"></i>
+          </a>
+          <a class="text-primary hover:text-dark transition-colors duration-200 fs-1"
+            href="https://www.linkedin.com/in/pavel-cieslar/" target="_blank" rel="noopener noreferrer"
+            title="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a class="text-primary hover:text-dark transition-colors duration-200 fs-1"
+            href="https://github.com/pavelcieslar1" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
         </div>
-    </main>
-    <!-- Footer-->
-    <footer class="bg-light py-4 mt-auto">
-        <div class="container px-5">
-            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto">
-                    <div class="small m-0">Copyright &copy; </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5" id="about">
+      <div class="container px-4 glass-card p-5">
+        <div class="row align-items-center justify-content-center g-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <h2 class="display-3 mb-4 text-gradient">O mně</h2>
+            <p class="text-dark mb-4 fs-5">
+              Jsem začínající vývojář softwaru s vášní pro IT a programování.
+              Od prvotního zájmu o počítačové hry mě cesta dovedla k vývoji
+              softwaru, kde mohu přetvářet nápady v reálné aplikace. Rozšiřuji
+              své znalosti v oblasti programování webových a desktopových
+              aplikací, databází, automatizovaného testování a DevOps
+              nástrojů. Nejvíce se zaměřuji na C#, Javu a webové technologie.
+              Mým cílem je růst jako vývojář a přispívat k inovativním
+              projektům, které mají smysl.
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <img src="./images/me_photo.png" alt="Fotografie Pavla Cieslara"
+              class="img-fluid profile-image rounded-3 transform" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-5" id="projects">
+      <div class="container px-4">
+        <div class="text-center mb-5">
+          <h1 class="display-2 text-gradient">Projekty</h1>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+          <!-- Project Card 1 -->
+          <div class="col d-flex">
+            <div class="card h-100 p-1 text-center">
+              <div class="liquidGlass-wrapper menu">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text">
+                  <div class="card-body">
+                    <a href="#" class="d-block mb-3">
+                      <img class="card-img-top w-100 h-auto rounded-4 shadow-sm"
+                        src="https://placehold.co/600x400/D1E0F5/3B82F6?text=Projekt+Bonded"
+                        alt="Seznamka Bonded - ilustrační obrázek" />
+                    </a>
+                    <h2 class="h4 card-title fw-bold text-dark mb-2">
+                      Seznamka Bonded
+                    </h2>
+                    <p class="fw-semibold text-primary mb-3 fs-5">
+                      Bootstrap, CSS, Typescript, ASP.NET, MS/SQL, Entity
+                      Framework, Node-JS
+                    </p>
+                    <p class="card-text text-dark mb-3 flex-grow-1 fw-lighter fs-6">
+                      Bonded je seznamka založená na osobnostním testu, který
+                      pokrývá 13 psychologických kategorií. Na základě bodového skóre algoritmus
+                      vyhodnocuje kompatibilitu a doporučuje nejvhodnější partnery.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 text-secondary mt-auto">
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://pavel-cieslar.hys.cz/test/bootstrap" target="_blank" rel="noopener noreferrer"
+                        title="Otevřít projekt">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://github.com/pavelcieslar1" target="_blank" rel="noopener noreferrer"
+                        title="GitHub repozitář">
+                        <i class="bi bi-github"></i>
+                      </a>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="col d-flex">
+            <div class="card h-100 p-1 text-center">
+              <div class="liquidGlass-wrapper menu">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text">
+                  <div class="card-body">
+                    <a href="#" class="d-block mb-3">
+                      <img class="card-img-top w-100 h-auto rounded-4 shadow-sm"
+                        src="https://placehold.co/600x400/D1E0F5/3B82F6?text=Databaze+uzivatelu"
+                        alt="Ilustrační obrázek databáze uživatelů" />
+                    </a>
+                    <h2 class="h4 card-title fw-bold text-dark mb-2">
+                      Databáze uživatelů
+                    </h2>
+                    <p class="fw-semibold text-primary mb-3">
+                      C# ASP.NET, MS/SQL, Entity Framework
+                    </p>
+                    <p class="card-text text-dark mb-3 flex-grow-1 fw-lighter fs-6">
+                      Tento projekt se zaměřuje na správu uživatelských dat, s
+                      důrazem na efektivní ukládání a získávání informací.
+                      Implementoval jsem dynamické prvky, formulářovou validaci a
+                      interaktivní výpočty v reálném čase.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 text-secondary mt-auto">
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://pavel-cieslar.hys.cz/objednavka/" target="_blank" rel="noopener noreferrer"
+                        title="Otevřít projekt">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://github.com/pavelcieslar1" target="_blank" rel="noopener noreferrer"
+                        title="GitHub repozitář">
+                        <i class="bi bi-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="col d-flex">
+            <div class="card h-100 p-1 text-center">
+              <div class="liquidGlass-wrapper menu">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text">
+                  <div class="card-body">
+                    <a href="#" class="d-block mb-3">
+                      <img class="card-img-top w-100 h-auto rounded-4 shadow-sm"
+                        src="https://placehold.co/600x400/D1E0F5/3B82F6?text=Akvarium"
+                        alt="Ilustrační obrázek Akvária" />
+                    </a>
+                    <h2 class="h4 card-title fw-bold text-dark mb-2">Akvárium</h2>
+                    <p class="fw-semibold text-primary mb-3">Java, Spring</p>
+                    <p class="card-text text-dark mb-3 flex-grow-1 fw-lighter fs-6">
+                      V tomto projektu jsem si osvojil práci s Java a Spring
+                      frameworkem. Vyzkoušel jsem si práci s komponentami, stavem
+                      aplikace a základními principy moderního backendu.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 text-secondary mt-auto">
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4" href="#"
+                        title="Otevřít projekt (není k dispozici)">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://github.com/pavelcieslar1/react" target="_blank" rel="noopener noreferrer"
+                        title="GitHub repozitář">
+                        <i class="bi bi-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 4 -->
+          <div class="col d-flex">
+            <div class="card h-100 p-1 text-center">
+              <div class="liquidGlass-wrapper menu">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text">
+                  <div class="card-body">
+                    <a href="#" class="d-block mb-3">
+                      <img class="card-img-top w-100 h-auto rounded-4 shadow-sm"
+                        src="https://placehold.co/600x400/D1E0F5/3B82F6?text=Pocasi" alt="Ilustrační obrázek počasí" />
+                    </a>
+                    <h2 class="h4 card-title fw-bold text-dark mb-2">Počasí</h2>
+                    <p class="fw-semibold text-primary mb-3">Java, Spring</p>
+                    <p class="card-text text-dark mb-3 flex-grow-1 fw-lighter fs-6">
+                      V tomto projektu jsem se zaměřil na získávání a zobrazování
+                      dat o počasí pomocí Java a Spring. Implementoval jsem
+                      integraci s externími API a zpracování dat.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 text-secondary mt-auto">
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://pavel-cieslar.hys.cz/php-knihovna/" target="_blank" rel="noopener noreferrer"
+                        title="Otevřít projekt">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <a class="text-muted fs-4 cursor-not-allowed" title="GitHub repozitář není k dispozici">
+                        <i class="bi bi-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 5 -->
+          <div class="col d-flex">
+            <div class="card h-100 p-1 text-center">
+              <div class="liquidGlass-wrapper menu">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text">
+                  <div class="card-body">
+                    <a href="https://pavel-cieslar.hys.cz/test/" class="d-block mb-3">
+                      <img class="card-img-top w-100 h-auto rounded-4  shadow-sm" src="images/project01.png"
+                        alt="Digitální výstava - úvodní stránka" />
+                    </a>
+                    <h2 class="h4 card-title fw-bold text-dark mb-2">
+                      Digitální výstava
+                    </h2>
+                    <p class="fw-semibold text-primary mb-3">Bootstrap, SCSS</p>
+                    <p class="card-text text-dark mb-3 flex-grow-1 fs-6 fw-lighter">
+                      Při tvorbě této fiktivní stránky jsem pracoval s použitím
+                      frameworku Bootstrap. Zaměřil jsem se na responzivní design,
+                      grid systém a komponenty pro rychlé prototypování moderního
+                      webu.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 text-secondary mt-auto">
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://pavel-cieslar.hys.cz/test/bootstrap" target="_blank" rel="noopener noreferrer"
+                        title="Otevřít projekt">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://github.com/pavelcieslar1" target="_blank" rel="noopener noreferrer"
+                        title="GitHub repozitář">
+                        <i class="bi bi-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 6 -->
+          <div class="col d-flex">
+            <div class="card h-100 p-1 text-center">
+              <div class="liquidGlass-wrapper menu">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text">
+                  <div class="card-body">
+                    <a href="https://pavel-cieslar.hys.cz/objednavka/" class="d-block mb-3">
+                      <img class="card-img-top w-100 h-auto rounded-4 shadow-sm" src="images/food.png"
+                        alt="Formulář pro objednávku jídla" />
+                    </a>
+                    <h2 class="h4 card-title fw-bold text-dark mb-2">Formulář</h2>
+                    <p class="fw-semibold text-primary mb-3">
+                      Bootstrap, Javascript
+                    </p>
+                    <p class="card-text text-dark mb-3 flex-grow-1 fs-6 fw-lighter">
+                      Pomocí JavaScriptu jsem v tomto projektu implementoval
+                      dynamické prvky, formulářovou validaci a interaktivní výpočty
+                      v reálném čase.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 text-secondary mt-auto">
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://pavel-cieslar.hys.cz/objednavka/" target="_blank" rel="noopener noreferrer"
+                        title="Otevřít projekt">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://github.com/pavelcieslar1" target="_blank" rel="noopener noreferrer"
+                        title="GitHub repozitář">
+                        <i class="bi bi-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 7 -->
+          <div class="col d-flex">
+            <div class="card h-100 p-1 text-center">
+              <div class="liquidGlass-wrapper menu">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text">
+                  <div class="card-body">
+                    <a href="https://pavel-cieslar.hys.cz/react/" class="d-block mb-3">
+                      <img class="card-img-top w-100 h-auto rounded-4 shadow-sm" src="images/react.png"
+                        alt="Ukázka aplikace Akvárium v Reactu" />
+                    </a>
+                    <h2 class="h4 card-title fw-bold text-dark mb-2">Akvárium</h2>
+                    <p class="fw-semibold text-primary mb-3">
+                      React, Bootstrap, JavaScript
+                    </p>
+                    <p class="card-text text-dark mb-3 flex-grow-1 fw-lighter fs-6">
+                      Zde jsem pomocí Reactu pracoval s komponentami. Vyzkoušel jsem
+                      si práci se stavem aplikace, props a základní principy
+                      moderního frontendu.
+
+                    </p>
+
+                    <div class="d-flex justify-content-center gap-3 text-dark mt-auto">
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://pavel-cieslar.hys.cz/react/" target="_blank" rel="noopener noreferrer"
+                        title="Otevřít projekt">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://github.com/pavelcieslar1/react" target="_blank" rel="noopener noreferrer"
+                        title="GitHub repozitář">
+                        <i class="bi bi-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 8 -->
+          <div class="col d-flex">
+            <div class="card h-100 p-1 text-center">
+              <div class="liquidGlass-wrapper menu">
+                <div class="liquidGlass-effect"></div>
+                <div class="liquidGlass-tint"></div>
+                <div class="liquidGlass-shine"></div>
+                <div class="liquidGlass-text">
+                  <div class="card-body">
+                    <a href="https://pavel-cieslar.hys.cz/php-knihovna" class="d-block mb-3">
+                      <img class="card-img-top w-100 h-auto rounded-4 shadow-sm" src="images/databaze_knih.png"
+                        alt="Databáze knih - uživatelské rozhraní" />
+                    </a>
+                    <h2 class="h4 card-title fw-bold text-dark mb-2">
+                      Databáze knih
+                    </h2>
+                    <p class="fw-semibold text-primary mb-3">
+                      PHP, MYSQL, Bootstrap
+                    </p>
+                    <p class="card-text text-dark mb-3 flex-grow-1 fw-lighter fs-6">
+                      V tomto projektu jsem si osvojil práci s PHP a MySQL. Vytvořil
+                      jsem systém pro správu knihovny, kde se pracuje s databází –
+                      přidávání, mazání a úprava knih. Naučil jsem se základy CRUD
+                      operací, práci s formuláři a komunikaci mezi frontendem a
+                      databází.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 text-secondary mt-auto">
+                      <a class="text-primary hover:text-dark transition-colors duration-200 fs-4"
+                        href="https://pavel-cieslar.hys.cz/php-knihovna/" target="_blank" rel="noopener noreferrer"
+                        title="Otevřít projekt">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                      </a>
+                      <a class="text-muted fs-4 cursor-not-allowed" title="GitHub repozitář není k dispozici">
+                        <i class="bi bi-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-5" id="skills">
+      <div class="container px-4">
+        <div class="glass-card p-5">
+          <h2 class="display-3 text-gradient mb-5 d-flex align-items-center">
+            <i class="bi bi-code-slash me-3"></i> Znalosti
+          </h2>
+          <div class="row g-4">
+            <!-- Programovací jazyky -->
+            <div class="col-md-6 col-lg-4">
+              <h4 class="h5 fw-bold text-dark mb-3 d-flex align-items-center">
+                <i class="bi bi-code me-2"></i> Programovací jazyky
+              </h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-file-earmark-code me-2 text-primary"></i>
+                  C#/.NET
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-file-earmark-code me-2 text-primary"></i>
+                  Java
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-file-earmark-code me-2 text-primary"></i>
+                  JavaScript
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-file-earmark-code me-2 text-primary"></i>
+                  PHP
+                </li>
+              </ul>
+            </div>
+            <!-- Webové technologie -->
+            <div class="col-md-6 col-lg-4">
+              <h4 class="h5 fw-bold text-dark mb-3 d-flex align-items-center">
+                <i class="bi bi-globe me-2"></i> Webové technologie
+              </h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-file-earmark-richtext me-2 text-primary"></i>
+                  HTML5
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-palette me-2 text-primary"></i> CSS3
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-box me-2 text-primary"></i> Bootstrap
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-layers me-2 text-primary"></i> React
+                </li>
+              </ul>
+            </div>
+            <!-- Databáze -->
+            <div class="col-md-6 col-lg-4">
+              <h4 class="h5 fw-bold text-dark mb-3 d-flex align-items-center">
+                <i class="bi bi-database me-2"></i> Databáze
+              </h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-server me-2 text-primary"></i> Oracle
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-server me-2 text-primary"></i> MS/SQL
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-server me-2 text-primary"></i> MS Access
+                </li>
+              </ul>
+            </div>
+            <!-- Frameworky a nástroje -->
+            <div class="col-md-6 col-lg-4">
+              <h4 class="h5 fw-bold text-dark mb-3 d-flex align-items-center">
+                <i class="bi bi-tools me-2"></i> Frameworky a nástroje
+              </h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-box-seam me-2 text-primary"></i> Spring
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-box-seam me-2 text-primary"></i> Docker
+                </li>
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-cloud me-2 text-primary"></i> Firebase
+                </li>
+              </ul>
+            </div>
+            <!-- Herní vývoj -->
+            <div class="col-md-6 col-lg-4">
+              <h4 class="h5 fw-bold text-dark mb-3 d-flex align-items-center">
+                <i class="bi bi-controller me-2"></i> Herní vývoj
+              </h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-transparent border-0 d-flex align-items-center">
+                  <i class="bi bi-joystick me-2 text-primary"></i> Unity
+                  Engine
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Interests -->
+          <div class="mt-5">
+            <h2 class="display-3 text-gradient mb-5 d-flex align-items-center">
+              <i class="bi bi-dribbble me-3"></i> Zájmy
+            </h2>
+            <ul class="list-unstyled ps-3 mb-4 fs-5 text-dark fw-light">
+              <li class="mb-3">
+                Technologie mě fascinují odjakživa – sleduji nejnovější trendy
+                a čtu odborné články, abych měl přehled o tom, kam se svět IT
+                ubírá. Jsem fanoušek sci-fi, ať už jde o filmy, knihy nebo
+                hry; miluji svět nekonečných možností a futuristických vizí.
+              </li>
+              <li class="mb-3">
+                Gaming mě nejen baví, ale také inspiruje k vlastním projektům.
+                Rád si dopřeju šálek kvalitní kávy, která mi pomáhá soustředit
+                se nebo si užít chvíle klidu. Miluji kvalitní jídlo a rád
+                objevuji nové chutě.
+              </li>
+              <li class="mb-3">
+                Největší radost mi dělá můj pes, se kterým rád trávím čas na
+                procházkách. Je to parťák, který mě vždy rozveselí a připomene
+                mi, jak důležité je užívat si maličkosti. Společné chvíle mi
+                dávají rovnováhu mezi prací a odpočinkem.
+              </li>
+              <li>
+                Ve volném čase se věnuji opravám drobné elektroniky a osobnímu
+                rozvoji, protože mě baví zlepšovat své dovednosti a rozšiřovat
+                obzory.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Images and Videos -->
+          <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 mt-4 justify-content-center">
+            <div class="col d-flex justify-content-center">
+              <img class="interest-media " src="./images/ja1.png" alt="Pavel Cieslar" />
+            </div>
+            <div class="col d-flex justify-content-center">
+              <img class="interest-media" src="./images/ja-4.png" alt="Pavel Cieslar s psem" />
+            </div>
+            <div class="col d-flex justify-content-center">
+              <div class="interest-media overflow-hidden ">
+                <video class="w-100 h-100 d-block " autoplay muted loop playsinline>
+                  <source src="./videos/aron1_trim.mp4" type="video/mp4" />
+                  Váš prohlížeč nepodporuje video tag.
+                </video>
+              </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+              <div class="interest-media overflow-hidden">
+                <video class="w-100 h-100 d-block" autoplay muted loop playsinline>
+                  <source src="./videos/aron2_trim.mp4" type="video/mp4" />
+                  Váš prohlížeč nepodporuje video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="py-5" id="resume">
+      <div class="container px-4">
+        <div class="text-center mb-5">
+          <h2 class="display-2 text-gradient mb-4">Životopis</h2>
+          <h3>
+            <a class="text-primary hover:text-dark transition-colors duration-200 fs-4 d-flex align-items-center justify-content-center"
+              href="./CIESLAR_CV_CS.pdf" download>
+              <i class="bi bi-download me-2"></i> Ke stažení
+            </a>
+          </h3>
+        </div>
+        <div class="row g-4">
+          <!-- Experience Section -->
+          <div class="col-lg-6">
+            <h2 class="display-5 fw-bold text-primary mb-4">Zkušenosti</h2>
+            <!-- Experience Card 1 -->
+            <div class="card glass-card mb-4">
+              <div class="card-body p-4">
+                <div
+                  class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-2">
+                  <div class="fw-bold text-primary fs-5">2022 - 2024</div>
+                  <div class="fs-4 fw-semibold text-dark">
+                    Elektrospecialista
+                  </div>
+                </div>
+                <div class="text-dark ">
+                  Electroworld s.r.o, Ostrava, Česká Republika
+                </div>
+              </div>
+            </div>
+            <!-- Experience Card 2 -->
+            <div class="card glass-card mb-4">
+              <div class="card-body p-4">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-2">
+                  <div class="fw-bold text-primary fs-5">2017 - 2017</div>
+                  <div class="fs-4 fw-semibold text-dark ms-auto"> Stážista – tvorba reklamy</div>
+                </div>
+                <div class="text-dark">
+                  Multiplicalia, Sevilla, Spain
+                </div>
+              </div>
+            </div>
+            <!-- Experience Card 3 -->
+            <div class="card glass-card mb-4">
+              <div class="card-body p-4">
+                <div
+                  class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-2">
+                  <div class="fw-bold text-primary fs-5">2016 - 2016</div>
+                  <div class="fs-4 fw-semibold text-dark">
+                    Stážista – Web developer
+                  </div>
+                </div>
+                <div class="text-dark">
+                  DevX s.r.o, Třinec, Česká Republika
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Section -->
+          <div class="col-lg-6">
+            <h2 class="display-5 fw-bold text-primary mb-4">Vzdělání</h2>
+            <!-- Education Card 1 -->
+            <div class="card glass-card mb-4">
+              <div class="card-body p-4">
+                <div
+                  class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-2">
+                  <div class="fw-bold text-primary fs-5">
+                    2024 - Současnost
+                  </div>
+                  <div class="fs-4 fw-semibold text-dark">
+                    Rekvalifikační kurz - OOP
+                  </div>
+                </div>
+                <div class="text-dark">
+                  VŠB - Technická univerzita Ostrava, Česká Republika
+                </div>
+              </div>
+            </div>
+            <!-- Education Card 2 -->
+            <div class="card glass-card mb-4">
+              <div class="card-body p-4">
+                <div
+                  class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-2">
+                  <div class="fw-bold text-primary fs-5">2018 - 2022</div>
+                  <div class="fs-4 fw-semibold text-dark">
+                    Ostravská Univerzita
+                  </div>
+                </div>
+                <div class="text-dark">Ostrava, Česká Republika</div>
+                <div class="fst-italic text-dark small">
+                  -Studium nedokončeno- Aplikovaná Informatika
+                </div>
+              </div>
+            </div>
+            <!-- Education Card 3 -->
+            <div class="card glass-card mb-4">
+              <div class="card-body p-4">
+                <div
+                  class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-2">
+                  <div class="fw-bold text-primary fs-5">2014 - 2018</div>
+                  <div class="fs-4 fw-semibold text-dark">
+                    TŘINECKÁ OBCHODNÍ AKADEMIE INFORMAČNÍCH TECHNOLOGIÍ A
+                    VEŘEJNÉ SPRÁVY, s.r.o.
+                  </div>
+                </div>
+                <div class="text-dark">Třinec, Česká Republika</div>
+                <div class="fst-italic text-dark small">
+                  S Maturitou, Informační technologie
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+      <div class="container px-4">
+        <div class="glass-card p-5 mx-auto" style="max-width: 48rem">
+          <!-- max-w-2xl -->
+          <div class="text-center mb-4">
+            <div class="text-primary fs-1 mb-3">
+              <i class="bi bi-envelope-at-fill"></i>
+            </div>
+            <h2 class="display-3 text-gradient">Rychlý kontakt</h2>
+          </div>
+          <form id="contactForm">
+            <!-- Name input -->
+            <div class="mb-3">
+              <label for="name" class="form-label text-dark fw-bold mb-2">Celé jméno *</label>
+              <input
+                class="form-control shadow-sm rounded-lg py-3 px-4 text-dark lh-tight focus-ring focus-ring-primary transition duration-200"
+                id="name" type="text" placeholder="Vlož své jméno..." required />
+              <div id="name-feedback" class="invalid-feedback d-none text-danger mt-1">
+                Jméno je požadováno.
+              </div>
+            </div>
+            <!-- Email address input -->
+            <div class="mb-3">
+              <label for="email" class="form-label text-dark fw-bold mb-2">Email *</label>
+              <input
+                class="form-control shadow-sm rounded-lg py-3 px-4 text-dark lh-tight focus-ring focus-ring-primary transition duration-200"
+                id="email" type="email" placeholder="jmeno@priklad.com" required />
+              <div id="email-feedback" class="invalid-feedback d-none text-danger mt-1">
+                Email je požadován nebo je špatně zadaný.
+              </div>
+            </div>
+            <!-- Phone number input -->
+            <div class="mb-3">
+              <label for="phone" class="form-label text-dark fw-bold mb-2">Telefonní číslo</label>
+              <input
+                class="form-control shadow-sm rounded-lg py-3 px-4 text-dark lh-tight focus-ring focus-ring-primary transition duration-200"
+                id="phone" type="tel" placeholder="(+420) 123 456 789" />
+            </div>
+            <!-- Message input -->
+            <div class="mb-3">
+              <label for="message" class="form-label text-dark fw-bold mb-2">Zpráva *</label>
+              <textarea
+                class="form-control shadow-sm rounded-lg py-3 px-4 text-dark lh-tight focus-ring focus-ring-primary transition duration-200"
+                id="message" placeholder="Zde zadej svou zprávu" rows="6" required></textarea>
+              <div id="message-feedback" class="invalid-feedback d-none text-danger mt-1">
+                Zpráva je požadována.
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-primary-custom" id="submitButton" type="submit" disabled>
+                Odeslat (dočasně mimo provoz)
+              </button>
+            </div>
+            <p class="text-center text-dark small mt-4">
+              Prosím kontaktujte mě prostřednictvím údajů v mém
+              <a href="./CIESLAR_CV_CS.pdf"
+                class="text-primary hover:text-dark text-decoration-underline">životopise</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+    <svg style="display: none">
+      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+        <!-- Seeds: 14, 17,  -->
+
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+
+        <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100"
+          lighting-color="white" result="specLight">
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+
+        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+
+        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="150" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 mt-auto">
+    <div class="container px-4 text-center text-secondary small">
+      Copyright &copy; Pavel Cieslar
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll(".nav-link");
+      const navbarToggler = document.querySelector(".navbar-toggler");
+      const navigationCollapse = document.getElementById("navigation");
+
+      navLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+          if (
+            navigationCollapse.classList.contains("show") &&
+            window.innerWidth < 992
+          ) {
+            navbarToggler.click();
+          }
+        });
+      });
+
+      // Validace formuláře a povolení/zakázání tlačítka
+      const contactForm = document.getElementById("contactForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const messageInput = document.getElementById("message");
+      const submitButton = document.getElementById("submitButton");
+
+      function validateForm() {
+        let isNameValid = nameInput.value.trim() !== "";
+        let isEmailValid =
+          emailInput.value.trim() !== "" && emailInput.checkValidity();
+        let isMessageValid = messageInput.value.trim() !== "";
+
+        document
+          .getElementById("name-feedback")
+          .classList.toggle("d-none", isNameValid);
+        document
+          .getElementById("email-feedback")
+          .classList.toggle("d-none", isEmailValid);
+        document
+          .getElementById("message-feedback")
+          .classList.toggle("d-none", isMessageValid);
+
+        submitButton.disabled = !(
+          isNameValid &&
+          isEmailValid &&
+          isMessageValid
+        );
+      }
+
+      nameInput.addEventListener("input", validateForm);
+      emailInput.addEventListener("input", validateForm);
+      messageInput.addEventListener("input", validateForm);
+
+      validateForm();
+
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        console.log(
+          "Formulář byl pokusně odeslán (funkcionalita je vypnuta)."
+        );
+      });
+    });
+  </script>
 </body>
 
 </html>
