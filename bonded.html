@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonded - Moderní seznamka s AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ff69b4 0%, #ffd6ec 45%, #77ddff 100%);
+            background-attachment: fixed;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background: linear-gradient(135deg, #ff69b4 0%, #ffd6ec 45%, #77ddff 100%);
+            }
+            25% {
+                background: linear-gradient(135deg, #77ddff 0%, #ff69b4 45%, #ffd6ec 100%);
+            }
+            50% {
+                background: linear-gradient(135deg, #ffd6ec 0%, #77ddff 45%, #ff69b4 100%);
+            }
+            75% {
+                background: linear-gradient(135deg, #827dd2 0%, #ff69b4 45%, #77ddff 100%);
+            }
+            100% {
+                background: linear-gradient(135deg, #ff69b4 0%, #ffd6ec 45%, #77ddff 100%);
+            }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 0 20px 10px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.8),
+                transparent
+            );
+        }
+
+        .glass-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.8),
+                transparent,
+                rgba(255, 255, 255, 0.3)
+            );
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            font-weight: 300;
+            color: white;
+            margin: 0;
+
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(275deg, #ffffff, #ffffff);
+            -webkit-mask: url('images/logo.png') no-repeat center;
+            mask: url('images/logo.png') no-repeat center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+
+        .gemini-powered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: slideInFromLeft 1s ease-out 0.5s both;
+        }
+
+        .gemini-powered span {
+            background: linear-gradient(
+                10deg,
+                #77ddff 0%,
+                #827dd2 50%,
+                #ff69b4 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .gemini-logo {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(
+                45deg,
+                #77ddff 0%,
+                #827dd2 50%,
+                #ff69b4 100%
+            );
+            -webkit-mask: url('images/blank-gemini-star.png') no-repeat center;
+            mask: url('images/blank-gemini-star.png') no-repeat center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            animation: slideInFromRight 1s ease-out 0.7s both;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .btn-bonded {
+            background: linear-gradient(135deg, #ff69b4, #77ddff);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            animation: buttonPulse 2s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        .btn-bonded::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-bonded:hover::before {
+            left: 100%;
+        }
+
+        .btn-bonded:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% {
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+            }
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #ff69b4, #77ddff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-image {
+            width: 100%;
+            max-width: 150px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 0 auto 0.5rem auto;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(
+                45deg,
+                #77ddff 0%,
+                #827dd2 50%,
+                #ff69b4 100%
+            );
+            -webkit-mask: url('images/blank-gemini-star.png') no-repeat center;
+            mask: url('images/blank-gemini-star.png') no-repeat center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            display: block;
+        }
+
+        .feature-gemini {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .feature-gemini-logo {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(
+                45deg,
+                #77ddff 0%,
+                #827dd2 50%,
+                #ff69b4 100%
+            );
+            -webkit-mask: url('images/blank-gemini-star.png') no-repeat center;
+            mask: url('images/blank-gemini-star.png') no-repeat center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+
+        .app-screenshot {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            margin: 1rem 0;
+        }
+
+        .download-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .store-btn {
+            background: linear-gradient(135deg, #ff69b4, #77ddff);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .store-btn:hover {
+            background: linear-gradient(135deg, #ff5ba3, #6bc8f0);
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .store-btn.disabled {
+            background: linear-gradient(135deg, #cccccc, #999999);
+            color: #666666;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .store-btn.disabled:hover {
+            background: linear-gradient(135deg, #cccccc, #999999);
+            transform: none;
+            color: #666666;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .availability-note .alert {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .availability-note .alert-link {
+            color: #ff69b4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .availability-note .alert-link:hover {
+            color: #77ddff;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-logo {
+                width: 80px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .store-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /*BACKGROUND HEART EFFECT*/
+        #heart-container {
+          pointer-events: none;
+          position: fixed;
+          inset: 0;
+          width: 100vw;
+          height: 100vh;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        /* Obecný styl pro všechna srdíčka */
+        .heart-icon {
+          position: absolute;
+          color: white;
+          opacity: 0.25;
+          will-change: transform, left, top;
+          filter: drop-shadow(0 4px 12px #fff4);
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          z-index: 0;
+        }
+
+        /* Každé srdíčko má vlastní animaci, pozici a velikost */
+        .heart1 {
+          font-size: 360px;
+          left: 0vw;
+          top: 70vh;
+          animation: fly1 13s alternate infinite;
+        }
+        .heart2 {
+          font-size: 480px;
+          left: 70vw;
+          top: 80vh;
+          animation: fly2 17s alternate infinite;
+        }
+        .heart3 {
+          font-size: 600px;
+          left: 40vw;
+          top: 72vh;
+          animation: fly3 15s alternate infinite;
+        }
+        .heart4 {
+          font-size: 520px;
+          left: 5vw;
+          top: 45vh;
+          animation: fly4 11s alternate infinite;
+        }
+        .heart5 {
+          font-size: 380px;
+          left: 80vw;
+          top: 58vh;
+          animation: fly5 19s alternate infinite;
+        }
+        .heart6 {
+          font-size: 200px;
+          left: 60vw;
+          top: 60vh;
+          animation: fly6 12s alternate infinite;
+        }
+        .heart7 {
+          font-size: 430px;
+          left: 33vw;
+          top: 25vh;
+          animation: fly7 16s alternate infinite;
+        }
+        .heart8 {
+          font-size: 340px;
+          left: 10vw;
+          top: 35vh;
+          animation: fly8 18s alternate infinite;
+        }
+        .heart9 {
+          font-size: 410px;
+          left: 85vw;
+          top: 33vh;
+          animation: fly9 15s alternate infinite;
+        }
+        .heart10 {
+          font-size: 500px;
+          left: 55vw;
+          top: 10vh;
+          animation: fly10 14s alternate infinite;
+        }
+
+        /* Animace pro jednotlivá srdíčka */
+        @keyframes fly1 {
+          0% {
+            transform: translateY(0) scale(1);
+          }
+          100% {
+            transform: translateY(-120px) translateX(30px) scale(1.07);
+          }
+        }
+        @keyframes fly2 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-190px) translateX(-25px) scale(0.95);
+          }
+        }
+        @keyframes fly3 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-160px) translateX(15px) scale(1.12);
+          }
+        }
+        @keyframes fly4 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-130px) translateX(35px) scale(1.05);
+          }
+        }
+        @keyframes fly5 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-220px) translateX(-18px) scale(0.9);
+          }
+        }
+        @keyframes fly6 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-150px) translateX(42px) scale(1.06);
+          }
+        }
+        @keyframes fly7 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-110px) translateX(-22px) scale(0.93);
+          }
+        }
+        @keyframes fly8 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-150px) translateX(22px) scale(1.04);
+          }
+        }
+        @keyframes fly9 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-140px) translateX(-32px) scale(1.1);
+          }
+        }
+        @keyframes fly10 {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-130px) translateX(10px) scale(1.02);
+          }
+        }
+
+        /* Staggered Text Animation */
+        .staggered-text {
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .staggered-text span {
+            display: inline-block;
+            animation: staggeredFadeIn 0.5s ease-out both;
+        }
+
+        @keyframes staggeredFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, white, transparent);
+            display: block;
+            margin: 0 auto;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-card h5 {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .category-card p {
+            color: #666;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .category-card .text-primary {
+            color: #ff69b4 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="hero-content">
+                        <div class="hero-title-container">
+                            <div class="hero-logo"></div>
+                            <h1 class="hero-title fw-light">Bonded</h1>
+                        </div>
+                        <div class="gemini-powered">
+                            <span>Powered by Gemini AI</span>
+                            <div class="gemini-logo"></div>
+                        </div>
+                        <p class="hero-subtitle">Moderní seznamka s AI, která spojuje duše na základě psychologické kompatibility</p>
+                        <a href="#download" class="btn-bonded">Začít seznamování</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Heart Background Container -->
+    <div id="heart-container">
+        <i class="bi bi-balloon-heart-fill heart-icon heart1"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart2"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart3"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart4"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart5"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart6"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart7"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart8"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart9"></i>
+        <i class="bi bi-balloon-heart-fill heart-icon heart10"></i>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Proč Bonded?</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card feature-card">
+                        <div class="feature-image"></div>
+                        <h4>AI Psychologická analýza</h4>
+                        <p>Pokročilý algoritmus ve spolupráci s Gemini analyzuje vaši osobnost a vztahové preference pro přesné párování.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card feature-card">
+                        <i class="bi bi-heart-fill feature-icon"></i>
+                        <h4>Hluboká kompatibilita</h4>
+                        <p>Nepárujeme vás náhodně, ale na základě skutečné psychologické kompatibility a sdílených hodnot.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="glass-card feature-card">
+                        <i class="bi bi-chat-dots feature-icon"></i>
+                        <h4>AI Asistent komunikace</h4>
+                        <p>Personalizované tipy a doporučení pro efektivní navazování komunikace a budování vztahů.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="glass-card p-4">
+                        <h3 class="mb-4">O aplikaci Bonded</h3>
+                        <p>Bonded je moderní platforma pro seriózní seznámení, která spojuje uživatele na základě podrobné psychologické analýzy osobnosti a vztahových preferencí.</p>
+                        <p>Naše aplikace využívá pokročilý algoritmus doprovázen Gemini API od Googlu, který detailně analyzuje kompatibilitu mezi uživateli a zajišťuje přesnější párování na základě osobnostních profilů.</p>
+                        <p>Platforma také integruje další AI funkce, které pomáhají uživatelům efektivně navazovat komunikaci a poskytují personalizovaná doporučení pro vytváření kvalitních a dlouhodobých vztahů.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="images/app-screenshot-1.jpg" alt="Bonded App Screenshot" class="app-screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personality Questionnaire Section -->
+    <section id="questionnaire" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="glass-card p-5">
+                        <h3 class="text-center mb-4">Dotazník osobnosti</h3>
+                        <p class="text-center mb-5">Pro přesné párování je potřeba vyplnit podrobný dotazník osobnosti s více než 100 otázkami rozdělenými do 13 kategorií. Algoritmus pak analyzuje vaše odpovědi a hledá kompatibilní partnery.</p>
+                        
+                        <div class="row g-4">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-heart-fill text-primary me-2"></i>Empatie</h5>
+                                    <p>Schopnost chápat a vnímat emoce druhých.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-chat-dots-fill text-primary me-2"></i>Komunikace</h5>
+                                    <p>Otevřenost a styl komunikace ve vztahu.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-wechat text-primary me-2"></i>Řešení konfliktů</h5>
+                                    <p>Jak uživatelé zvládají konflikty a hledají kompromisy.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-clock-fill text-primary me-2"></i>Trpělivost</h5>
+                                    <p>Míra tolerance a schopnost čekat na vývoj vztahu.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-lightning-fill text-primary me-2"></i>Emoční stabilita</h5>
+                                    <p>Zvládání stresu, impulsivity a negativních emocí.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-arrow-repeat text-primary me-2"></i>Otevřenost a flexibilita</h5>
+                                    <p>Přizpůsobivost změnám a ochota objevovat nové věci.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-person-heart text-primary me-2"></i>Romantická očekávání</h5>
+                                    <p>Pohled na romantiku a důležitost gest ve vztahu.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-emoji-laughing-fill text-primary me-2"></i>Smysl pro humor</h5>
+                                    <p>Význam humoru a jeho role ve vztahu.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-award-fill text-primary me-2"></i>Hodnoty a přesvědčení</h5>
+                                    <p>Základní morální a etické postoje.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-house-heart-fill text-primary me-2"></i>Životní styl a hodnoty</h5>
+                                    <p>Preference v trávení volného času a životní priority.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-people-fill text-primary me-2"></i>Vztah k rodině</h5>
+                                    <p>Důležitost rodiny a vztah k ní.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-check-circle-fill text-primary me-2"></i>Zodpovědnost a spolehlivost</h5>
+                                    <p>Přístup k závazkům a povinnostem.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="category-card">
+                                    <h5><i class="bi bi-briefcase-fill text-primary me-2"></i>Kariéra a ambice</h5>
+                                    <p>Pracovní cíle a důležitost kariéry v životě.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-5">
+                            <a href="#web-app" class="btn-bonded">
+                                <i class="bi bi-clipboard-check"></i>
+                                Začít vyplňovat dotazník
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web App Section -->
+    <section id="web-app" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="glass-card p-5">
+                        <h3 class="mb-4">Webová aplikace</h3>
+                        <p class="mb-4">Přístup k Bonded máte také přes webovou aplikaci. Stejné funkce, stejná kvalita párování, ale s pohodlím desktopového rozhraní.</p>
+                        <a href="https://bonded-app.web.app" class="btn-bonded" target="_blank">
+                            <i class="bi bi-globe"></i>
+                            Otevřít webovou aplikaci
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="download-section">
+                        <h3 class="mb-4">Stáhněte si Bonded</h3>
+                        <p class="mb-4">Začněte svou cestu k opravdovému vztahu ještě dnes. Bonded je dostupný na všech vašich zařízeních.</p>
+                        <div class="availability-note mb-4">
+                            <div class="alert alert-info" role="alert">
+                                <i class="bi bi-info-circle me-2"></i>
+                                <strong>Poznámka:</strong> Mobilní aplikace není momentálně dostupná. <br/>
+                                <a href="#web-app" class="alert-link">Webová aplikace</a> je plně funkční a dostupná.
+                            </div>
+                        </div>
+                        <div class="store-buttons">
+                            <a href="#" class="store-btn disabled">
+                                <i class="bi bi-apple"></i>
+                                <div>
+                                    <small>Stáhnout z</small><br>
+                                    <strong>App Store</strong>
+                                </div>
+                            </a>
+                            <a href="#" class="store-btn disabled">
+                                <i class="bi bi-google-play"></i>
+                                <div>
+                                    <small>Dostupné na</small><br>
+                                    <strong>Google Play</strong>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5>Bonded</h5>
+                    <p>Moderní seznamka s AI pro seriózní seznámení</p>
+                    <div class="disclaimer">
+                        <small class="text-muted">
+                            <i class="bi bi-info-circle"></i>
+                            Tato aplikace slouží pouze jako testovací projekt. Nejde o oficiální produkt, ale o projekt pro demonstraci ASP .NET technologií.
+                        </small>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h6>Odkazy</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#features" class="text-white text-decoration-none">Funkce</a></li>
+                        <li><a href="#about" class="text-white text-decoration-none">O aplikaci</a></li>
+                        <li><a href="#download" class="text-white text-decoration-none">Stáhnout</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6>Kontakt</h6>
+                    <p>Vývojář: <a href="index.html" class="text-white text-decoration-none">Portfolio</a></p>
+                    <p><small class="text-muted">Volnočasový projekt pro demonstraci AI technologií</small></p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Bonded. Testovací aplikace - volnočasový projekt.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

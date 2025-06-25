@@ -316,3 +316,17 @@ a {
 }
 
 /* OTHER STYLES */
+
+.card-img-top {
+  max-height: 170px;
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  display: block;
+  
+}
+
+.bonded-style {
+    background: linear-gradient(45deg, #77ddff9f, #ffd6ec9f 20%, rgba(255, 255, 255, 0) 50%);
+    
+}
